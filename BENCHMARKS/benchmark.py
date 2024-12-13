@@ -100,7 +100,7 @@ def get_n_col_skip(fn):
 
 
 def get_expected_genes():
-    d_input = os.path.dirname(__file__) + os.sep + "Input" + os.sep
+    d_input = os.path.dirname(os.path.abspath(__file__)) + os.sep + "Input" + os.sep
     input_files = list(glob.glob(d_input + "*fa"))
     assert(12 == len(input_files))
     all_genes = []
@@ -288,5 +288,6 @@ if __name__ == "__main__":
     parser.add_argument("ogs_filename", help="File containing orthogroups.")
     parser.add_argument("-b", "--basic", action="store_true", help="Basic delimited orthogroup file reader")
     args = parser.parse_args()
-    d_refogs = os.path.dirname(__file__) + os.sep + "RefOGs" + os.sep
+    d_refogs = os.path.dirname(os.path.abspath(__file__)) + os.sep + "RefOGs" + os.sep
+    print(__file__)
     benchmark(args.ogs_filename, d_refogs, args.basic)
